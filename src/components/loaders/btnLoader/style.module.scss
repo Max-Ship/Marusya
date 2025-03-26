@@ -1,0 +1,34 @@
+@use '../../../variables.scss' as *;
+
+
+.loader {
+    border: 2px solid $focus-second;
+    width: 24px;
+    height: 24px;
+    background: $top-text;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    animation: rotation .75s ease infinite;
+}
+
+.loader::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 12px solid;
+    border-color: transparent $focus-second;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

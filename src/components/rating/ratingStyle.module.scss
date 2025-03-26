@@ -1,0 +1,17 @@
+@use '../../variables' as *;
+
+.ratingRed {
+    background-color: $ratingRed;
+}
+
+.ratingGrey {
+    background-color: $ratingGrey;
+}
+
+.ratingGreen {
+    background-color: $ratingGreen;
+}
+
+.ratingGold {
+    background-color: $ratingGold;
+}

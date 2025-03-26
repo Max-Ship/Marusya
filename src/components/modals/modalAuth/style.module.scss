@@ -1,0 +1,215 @@
+@use '../../../variables.scss' as *;
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 12;
+}
+
+.container_form {
+    position: relative;
+    gap: 32px;
+    padding: 64px 40px;
+    border-radius: 24px;
+    background-color: white;
+    animation: formShow 0.4s ease-in-out forwards;
+}
+
+@keyframes formShow {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) skewX(-20deg);
+    }
+
+    40% {
+        opacity: 1;
+        transform: translateX(-50%) skewX(20deg);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateX(-50%) skewX(20deg);
+    }
+
+    100% {
+        transform: translateX(0) skewX(0);
+    }
+
+
+}
+
+.authLogo {
+    width: 157px;
+    height: 35px;
+}
+
+.authFormBtn {
+    font-weight: 700;
+    @include textBaseSecond;
+
+    &:focus {
+        color: $hover-second;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .authFormBtn:hover {
+        color: $focus-second;
+    }
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: -72px;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 24px;
+    background: white;
+}
+
+.form {
+    gap: 12px;
+    width: 100%;
+
+    &__title {
+        font-weight: 700;
+        @include textBaseMain;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include textBaseSecond;
+    }
+
+    &__button {
+        width: 100%;
+        @include primaryButton(true);
+    }
+
+    &__title,
+    &__text {
+        margin-bottom: 12px;
+    }
+}
+
+.wrapperInput {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.wrapperInput svg {
+    position: absolute;
+    top: 19px;
+    left: 16px;
+    fill: $dark;
+}
+
+.formInput {
+    padding: 16px 16px 16px 52px;
+    width: 340px;
+    border-radius: 8px;
+    border: 1px solid $dark;
+}
+
+.formInput,
+.formInput::placeholder {
+    @include textInput;
+}
+
+.formInput::placeholder {
+    color: $dark;
+}
+
+.formInput:focus {
+    border: 1px solid $authEff;
+
+    &::placeholder {
+        color: $authEff;
+    }
+}
+
+.wrapperInput:has(.formInput:focus) svg {
+    fill: $authEff;
+}
+
+@media screen and (min-width: 1024px) {
+    .formInput:hover {
+        border: 1px solid $authEff;
+    }
+
+    .wrapperInput:has(.formInput:hover) svg {
+        fill: $authEff;
+    }
+}
+
+.errorInput {
+    border: 1px solid $ratingRed !important;
+}
+
+.wrapperInput:has(.errorInput) svg {
+    fill: $ratingRed !important;
+}
+
+.errorInputText {
+    padding-top: 12px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    list-style: 1;
+    color: $ratingRed;
+}
+
+
+
+.loginInput,
+.registerInput {
+    @extend .formInput;
+}
+
+.login__button {
+    @extend .form__button;
+}
+
+// Медиа адаптив
+@media (max-width: 1024px) {
+    @media (orientation: landscape) {
+        .container_form {
+            overflow-y: auto;
+        }
+    }
+
+    .container_form {
+        gap: 24px;
+        padding: 64px 20px 32px 20px;
+    }
+
+    .authLogo {
+        width: 132px;
+        height: 30px;
+    }
+
+    .closeButton {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modalOverlay {
+        padding: 0 20px;
+    }
+
+    .container_form,
+    .formInput {
+        width: 100%;
+    }
+}

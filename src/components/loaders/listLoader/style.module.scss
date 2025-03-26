@@ -1,0 +1,100 @@
+@use 'sass:color';
+@use '../../../variables.scss' as *;
+
+.loader {
+    display: flex;
+    @include secondTitle;
+}
+
+.loader span:not(.dot) {
+    color: white;
+    animation: color-change 1s infinite;
+}
+
+.loader span:nth-child(7) {
+    margin-right: 10px;
+}
+
+.loader .dot {
+    margin-right: 5px;
+    color: white;
+    opacity: 0;
+    animation: appear 1s infinite;
+
+}
+
+.loader .dot:last-child {
+    margin-right: 0;
+}
+
+@keyframes color-change {
+    0% {
+        color: white;
+    }
+
+    50% {
+        color: #a393f5;
+    }
+
+    100% {
+        color: white;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.loader span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.loader span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.loader span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.loader span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.loader span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.loader span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.loader .dot:nth-child(8) {
+    animation-delay: 0s;
+}
+
+.loader .dot:nth-child(9) {
+    animation-delay: 0.2s;
+}
+
+.loader .dot:nth-child(10) {
+    animation-delay: 0.4s;
+}

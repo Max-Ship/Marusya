@@ -1,0 +1,105 @@
+@use '_normalize';
+@use '../variables' as *;
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow-y: visible;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: 'Play', 'Segoe UI', 'Arial', 'Tahoma', sans-serif;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180.00deg, rgba(39, 135, 245, 0.18) -18.657%, rgba(163, 147, 245, 0.18) 133.889%), linear-gradient(180.00deg, rgb(0, 0, 0), rgba(39, 36, 36, 0.7) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+button,
+input {
+    border: none;
+    outline: none;
+}
+
+a,
+button {
+    padding: 0;
+    cursor: pointer;
+}
+
+ul,
+li {
+    padding: 0;
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.flex__column {
+    flex-direction: column;
+}
+
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+    width: 10px;
+    background: $scroolbar;
+}
+
+::-webkit-scrollbar-track {
+    background: $scroolbar;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,
+            rgba(180, 169, 255, 0.8) 0%,
+            rgba(103, 165, 235, 0.8) 100%);
+    border-radius: 20px;
+    border: 2px solid $scroolbar;
+    transition: background 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg,
+            rgba(180, 169, 255, 1) 0%,
+            rgba(103, 165, 235, 1) 100%);
+}

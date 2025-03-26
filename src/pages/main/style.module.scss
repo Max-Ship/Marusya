@@ -1,0 +1,28 @@
+@use '../../variables' as *;
+
+.randomBlock {
+    margin-bottom: 40px;
+    min-height: 552px;
+}
+
+.topBlock {
+    padding-bottom: 120px;
+}
+
+.randomBlock,
+.topBlock {
+    width: 100%;
+}
+
+// Медиа адаптив
+@media (max-width: 1365px) {
+    .randomBlock {
+        margin-bottom: 56px;
+    }
+}
+
+@media (max-width: 992px) {
+    .topBlock {
+        padding-bottom: 32px;
+    }
+}

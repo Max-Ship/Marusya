@@ -1,0 +1,91 @@
+@use '../../variables' as *;
+
+
+.movieInfoBlock {
+    margin-bottom: 40px;
+}
+
+.movieDescription {
+    padding-bottom: 120px;
+}
+
+.description {
+    align-items: flex-start;
+    gap: 24px;
+
+    &__title {
+        margin-bottom: 40px;
+        @include secondTitle;
+    }
+
+    &__key {
+        gap: 8px;
+    }
+
+    &__param,
+    &__value {
+        font-weight: 400;
+        @include textBaseSecond;
+        color: white;
+    }
+
+    &__param {
+        gap: 8px;
+        width: 320px;
+        text-align: left;
+    }
+
+    &__dots {
+        flex-grow: 1;
+    }
+
+    &__dots::before {
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: 2px;
+        background: transparent;
+        border-top: 2px dotted white;
+    }
+}
+
+// Медиа адаптив
+@media (max-width: 992px) {
+    .movieInfoBlock {
+        margin-bottom: 54px;
+    }
+
+    .movieDescription {
+        padding-bottom: 32px;
+    }
+
+    .description {
+        align-items: flex-start;
+        gap: 12px;
+
+        &__title {
+            margin-bottom: 28px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .description {
+        &__dots {
+            display: none;
+            flex-grow: 0;
+        }
+
+        &__key {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        &__param {
+            width: max-content;
+            @include textMediaSmall;
+            color: $light-grey;
+        }
+    }
+}

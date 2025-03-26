@@ -1,0 +1,68 @@
+@use '../../variables' as *;
+
+.account {
+    align-items: flex-start;
+    gap: 64px;
+    padding-top: 32px;
+
+    &__title {
+        @include mainTitle;
+    }
+
+    &__btnWrap {
+        gap: 64px;
+        margin-bottom: -24px;
+    }
+
+    &__btn {
+        gap: 8px;
+        @include thirdButton;
+    }
+
+    &__btnImg {
+        display: block;
+        width: 24px;
+        height: 24px;
+    }
+
+    &__btn_favorites::after {
+        content: "Избранные фильмы";
+    }
+
+    &__btn_account::after {
+        content: "Настройка аккаунта";
+    }
+}
+
+// Меди адаптив
+@media (max-width: 992px) {
+    .account {
+        gap: 40px;
+        padding-top: 16px;
+
+        &__btnWrap {
+            gap: 24px;
+            margin-bottom: 0;
+        }
+
+        &__btn {
+            gap: 4px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .account {
+        &__btnWrap {
+            flex-wrap: wrap;
+        }
+
+        &__btn_favorites::after {
+            content: "Избранное";
+        }
+
+        &__btn_account::after {
+            content: "Настройки";
+        }
+    }
+}

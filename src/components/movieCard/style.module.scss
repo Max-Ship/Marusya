@@ -1,0 +1,14 @@
+@use '../../variables' as *;
+
+
+.card,
+.cardPoster {
+    display: flex;
+    width: inherit !important;
+    height: inherit !important;
+    border-radius: 16px;
+}
+
+.cardPoster {
+    @include posterImg;
+}

@@ -1,0 +1,152 @@
+@use 'sass:color';
+@use '../../../variables.scss' as *;
+
+.loaderMovieInfo {
+    gap: 30px;
+
+    &__rightBlock,
+    &__leftBlock {
+        height: 552px;
+    }
+
+    &__leftBlock {
+        justify-content: center;
+        align-items: flex-start;
+        gap: 22px;
+        width: 570px;
+    }
+
+    &__descr {
+        height: 32px;
+        width: 70%;
+        background: $loaders;
+        background-size: 200% 100%;
+        animation: shimmer-title 3s linear infinite reverse;
+        border-radius: 24px;
+    }
+
+    &__title {
+        height: 56px;
+        width: 80%;
+        background: $loaders;
+        background-size: 200% 100%;
+        animation: shimmer-title 3s linear infinite reverse;
+        border-radius: 24px;
+    }
+
+    &__plot {
+        margin-bottom: 44px;
+        height: 40%;
+        width: 100%;
+        background: linear-gradient(90deg,
+                rgba(180, 169, 255, 1) 0%,
+                rgba(103, 165, 235, 1) 100%);
+        background-size: 200% 100%;
+        animation: shimmer-title 3s linear infinite reverse;
+        border-radius: 24px;
+    }
+
+    &__wrapButton {
+        height: 56px;
+        width: 90%;
+        background: $loaders;
+        background-size: 200% 100%;
+        animation: shimmer-title 3s linear infinite reverse;
+        border-radius: 24px;
+    }
+
+    &__rightBlock {
+        width: 680px;
+        background: linear-gradient(90deg,
+                rgba(180, 169, 255, 1) 0%,
+                rgba(103, 165, 235, 1) 100%);
+        background-size: 200% 100%;
+        animation: shimmer-poster 3s linear infinite;
+        border-radius: 24px;
+    }
+
+
+    @keyframes shimmer-title {
+        from {
+            background-position-x: -200%;
+        }
+
+        to {
+            background-position-x: 200%;
+        }
+    }
+
+    @keyframes shimmer-poster {
+        from {
+            background-position-x: -200%;
+        }
+
+        to {
+            background-position-x: 200%;
+        }
+    }
+
+    // Медиа адаптив
+    @media (max-width: 1365px) {
+        & {
+            flex-direction: column;
+            gap: 20px;
+
+            &__rightBlock,
+            &__leftBlock {
+                width: 100%;
+            }
+
+            &__leftBlock {
+                order: 2;
+                justify-content: flex-start;
+                height: 430px;
+            }
+
+            &__rightBlock {
+                order: 1;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        & {
+            gap: 24px;
+
+            &__rightBlock,
+            &__leftBlock {
+                height: 372px;
+            }
+
+
+            &__leftBlock {
+                gap: 12px;
+            }
+
+            &__title {
+                height: 32px;
+            }
+
+            &__plot {
+                margin-bottom: 20px;
+                height: 30%;
+            }
+
+            &__descr {
+                height: 24px;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        & {
+            &__plot {
+                height: 75%;
+            }
+
+            &__rightBlock {
+                height: 260px;
+            }
+        }
+    }
+}

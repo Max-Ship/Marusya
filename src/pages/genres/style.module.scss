@@ -1,0 +1,71 @@
+@use '../../variables' as *;
+
+.genresPage {
+    flex-direction: column;
+    gap: 64px;
+    padding: 32px 0 160px 0;
+
+    &__title {
+        align-self: flex-start;
+        @include mainTitle;
+    }
+
+    &__genresFlex {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    &__genreCard {
+        width: calc((100% - 120px) / 4);
+        height: 304px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgb(10, 10, 11);
+        background-color: $myBlack;
+        box-shadow: $box-shadow;
+        transition: transform .3s ease;
+
+        &:has(a:focus) {
+            transform: scale(1.1);
+        }
+
+        &:has(a:focus) a>div:last-child {
+            color: $focus-second;
+        }
+
+        @media screen and (min-width: 1024px) {
+            &:has(a:hover) a>div:last-child {
+                color: $hover-first;
+            }
+        }
+    }
+}
+
+// Медиа адаптив
+@media (max-width: 992px) {
+    .genresPage {
+        gap: 40px;
+        padding: 16px 0 40px 0;
+
+        &__genresFlex {
+            justify-content: space-around;
+            gap: 24px;
+        }
+
+        &__genreCard {
+            width: calc((100% - 24px) / 2);
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .genresPage {
+        &__genresFlex {
+            flex-direction: column;
+        }
+
+        &__genreCard {
+            width: 100%;
+        }
+    }
+}

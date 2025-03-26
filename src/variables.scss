@@ -1,0 +1,196 @@
+$hover-first: rgb(180, 169, 255);
+$hover-second: rgb(69, 82, 110);
+$focus-nav: rgb(220, 93, 252);
+$authEff: rgb(180, 169, 255);
+$focus-second: rgb(103, 165, 235);
+$top-text: rgb(106, 93, 193);
+$dark: rgba(0, 0, 0, 0.4);
+$myBlack: rgb(10, 10, 11);
+$dark-grey: rgb(56, 58, 60);
+$dark-grey-second: rgb(51, 51, 51);
+$light-grey: rgba(255, 255, 255, 0.5);
+$scroolbar: #141414;
+$box-shadow: 0px 0px 80px 0px rgba(255, 255, 255, 0.33);
+$ratingRed: rgb(200, 32, 32);
+$ratingGrey: rgb(119, 119, 119);
+$ratingGreen: rgb(48, 142, 33);
+$ratingGold: rgb(165, 148, 0);
+$loaders: linear-gradient(90deg,
+        rgba(180, 169, 255, 1) 0%,
+        rgba(103, 165, 235, 1) 100%);
+
+@mixin titleBase {
+    font-weight: 700;
+    color: white;
+}
+
+@mixin textBaseMain {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin textBaseSecond {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+@mixin textMediaSmall {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+@mixin btnBase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    height: 56px;
+    border-radius: 28px;
+    font-weight: 700;
+    color: white;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+@mixin btnPaddingUI {
+    padding-left: 48px;
+    padding-right: 48px;
+}
+
+
+@mixin mainTitle {
+    @include titleBase;
+    font-size: 48px;
+    line-height: 56px;
+
+    // Медиа адаптив
+    @media (max-width: 992px) {
+        @include textBaseMain;
+    }
+}
+
+@mixin secondTitle {
+    @include titleBase;
+    font-size: 40px;
+    line-height: 48px;
+
+    // Медиа адаптив
+    @media (max-width: 992px) {
+        @include textBaseMain;
+    }
+}
+
+@mixin primaryButton($isAnimating: false) {
+    @include btnBase;
+    @include textBaseSecond;
+    flex-direction: if($isAnimating, row, column);
+    background-color: $focus-second;
+
+    @if $isAnimating {
+        gap: 10px;
+    }
+
+    &:focus {
+        background-color: $hover-second;
+        color: $light-grey;
+    }
+
+    @media screen and (min-width: 1024px) {
+        &:hover {
+            background-color: $hover-second;
+            color: $light-grey;
+        }
+    }
+}
+
+@mixin secondButton {
+    @include textBaseSecond;
+    @include btnBase;
+    flex-direction: column;
+    border: 1px solid $dark;
+    background-color: $dark-grey-second;
+
+    &:focus {
+        background-color: white;
+        color: black;
+    }
+
+    @media screen and (min-width: 1024px) {
+        &:hover {
+            background-color: $dark;
+            color: $light-grey;
+        }
+    }
+}
+
+@mixin thirdButton {
+    font-weight: 400;
+    color: white;
+    background-color: transparent;
+    @include textBaseMain;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+
+    &:focus {
+        border-bottom: 1.5px solid $focus-nav;
+    }
+
+    @media screen and (min-width: 1023.99px) {
+        &:hover {
+            color: $hover-first;
+
+        }
+    }
+}
+
+@mixin textInput {
+    font-weight: 400;
+    @include textBaseSecond;
+}
+
+@mixin listOfCard {
+    flex-grow: 1;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 63px;
+}
+
+@mixin cardOfList {
+    position: relative;
+    width: 224px;
+    height: 336px;
+}
+
+@mixin listOfCardMediaRow {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 40px;
+    height: max-content;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+@mixin posterImg {
+    object-fit: cover;
+    object-position: center;
+
+    // Медиа адаптив
+    @media (max-width: 992px) {
+        object-fit: fill;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 90%;
+    max-width: 1300px;
+}
+
+// Медиа адаптив
+@media (max-width: 768px) {
+    .container {
+        max-width: none;
+        width: 100%;
+        padding: 0 20px;
+    }
+}

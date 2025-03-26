@@ -1,0 +1,288 @@
+@use '../../../variables.scss' as *;
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(10, 11, 11, 0.9);
+    justify-content: center;
+    z-index: 6;
+    animation: showPlayer 0.2s ease-in-out forwards;
+
+}
+
+@keyframes showPlayer {
+    0% {
+        opacity: 0.2;
+        transform: scaleX(0.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.modalContent {
+    position: relative;
+    padding: 0 72px;
+    width: 960px;
+    height: 540px;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.playerContainer,
+.playPauseButton,
+.closeButton {
+    background-color: white;
+}
+
+.playerContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.playerWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: $dark-grey;
+}
+
+.movieTitle {
+    position: absolute;
+    left: 50%;
+    width: 95%;
+    padding: 24px 40px;
+    font-weight: 700;
+    @include textBaseMain;
+    color: white;
+    background: rgba($myBlack, 0.5);
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    &__show {
+        display: block;
+        animation: showTitle 0.5s ease-in-out 0.2s forwards;
+
+        @media (max-width: 1024px) {
+            @media (orientation: landscape) {
+                & {
+                    animation: showTitle 0.5s ease-in-out 0.2s forwards;
+                }
+            }
+
+            @media (orientation: portrait) {
+                & {
+                    left: 0;
+                    background-color: black;
+                    animation: mobailShowTitle 0.5s ease-in-out 0.2s forwards;
+                }
+            }
+        }
+    }
+
+    &__notShow {
+        display: none;
+    }
+}
+
+@keyframes showTitle {
+    0% {
+        opacity: 0;
+        bottom: -40px;
+    }
+
+    100% {
+        opacity: 1;
+        bottom: 24px;
+    }
+}
+
+@keyframes mobailShowTitle {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+        bottom: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        bottom: -72px;
+    }
+}
+
+.playPauseButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    border-radius: 48px;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.25s ease-in-out;
+
+    svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: calc(100% - 158px);
+    transition: opacity 0.25s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+@keyframes showControl {
+    0% {
+        opacity: 0;
+        bottom: -30px;
+    }
+
+    100% {
+        opacity: 1;
+        bottom: 0px;
+    }
+}
+
+.volumeControl {
+    width: 100px;
+}
+
+.playPauseButton,
+.closeButton {
+    justify-content: center;
+}
+
+.timeIndicator {
+    flex-grow: 1;
+    margin: 10px 0;
+    background: transparent;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin-top: -6px;
+    }
+
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 5px;
+        background-color: #ddd;
+        border-radius: 2px;
+    }
+
+    &::-webkit-slider-thumb,
+    &::-webkit-slider-runnable-track {
+        cursor: pointer;
+    }
+}
+
+.timeDisplay {
+    @include textBaseSecond;
+    color: white;
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px;
+    border-radius: 24px;
+    z-index: 9;
+}
+
+// Медиа адаптив
+@media (max-width: 1024px) {
+    .modalOverlay {
+        background-color: black;
+    }
+
+    .controls {
+        left: 0;
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    .movieTitle {
+        bottom: 3px;
+        width: 100%;
+        @include textBaseSecond;
+    }
+
+    .timeDisplay {
+        @include textMediaSmall;
+    }
+
+    .closeButton {
+        top: 8px;
+        right: 8px;
+        width: 32px !important;
+        height: 32px;
+    }
+
+    .playPauseButton {
+        padding: 16px;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .modalContent {
+        padding: 0;
+    }
+
+    @media (orientation: landscape) {
+        .modalContent {
+            width: 82%;
+            height: 100%;
+        }
+    }
+
+    @media (orientation: portrait) {
+        .modalContent {
+            width: 100%;
+            height: 82%;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    @media (orientation: landscape) {
+        .modalContent {
+            width: 82%;
+            height: 100%;
+        }
+    }
+
+    @media (orientation: portrait) {
+        .modalContent {
+            width: 100%;
+            height: 30%;
+        }
+    }
+}

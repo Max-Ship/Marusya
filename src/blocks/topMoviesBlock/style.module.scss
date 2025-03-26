@@ -1,0 +1,72 @@
+@use '../../variables' as *;
+
+.top {
+    gap: 64px;
+}
+
+.labelTop {
+    position: absolute;
+    left: -12px;
+    top: -12px;
+    justify-content: center;
+    padding: 8px 24px 8px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    @include textBaseMain;
+    color: $top-text;
+    background-color: white;
+    transition: background-color 0.3s ease-out;
+
+}
+
+.topTitle {
+    @include secondTitle;
+}
+
+.topList {
+    @include listOfCard;
+}
+
+.topCardMovie {
+    border-radius: 16px;
+    border: 1px solid rgba(white, 0.25);
+    box-shadow: $box-shadow;
+    transition: transform .3s ease-out;
+    @include cardOfList;
+
+    &:has(a:focus) {
+        transform: scale(1.1);
+
+        .labelTop {
+            background-color: $ratingGold;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        &:has(a:hover) {
+            .labelTop {
+                background-color: $hover-second;
+            }
+        }
+    }
+}
+
+// Медиа адаптив
+@media (max-width: 992px) {
+    .topList {
+        //Маска для boxshadow и позиционных элементов
+        margin: -80px 0 -80px -80px;
+        padding: 80px 0 80px 100px;
+        width: calc(100% + 120px);
+
+        @include listOfCardMediaRow;
+    }
+
+    .topCardMovie {
+        box-shadow: 0px 0px 60px 0px rgba(white, 0.33);
+    }
+
+    .top {
+        gap: 40px;
+    }
+}
